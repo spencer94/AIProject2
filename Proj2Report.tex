@@ -1,0 +1,44 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\graphicspath{ {Proj2Graphs/} }
+
+
+\author{Spencer Teolis}
+\title{Optimization Algorithims}
+\date{}
+\begin{document}
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+\section{introduction}
+Three algorithims were used to varying degrees of effect to find the global minima of a given function:
+\begin{equation}
+z = \dfrac{\sin(x^{2} + 3y^{2})}{0.1 + r^{2}} + (x^{2}+5y^{2}) \times \dfrac{\exp(1 - r^{2})}{2}, r = \sqrt{x^{2} + y^{2}}
+\end{equation}
+The global minima, rounded to 10 decimals, was found to be -0.1502519641, which corresponds to the points x = -2.17 y = 0.0.
+
+
+\section{Hill Climbing}
+Hill climbing was the first and simplest method used. Hill climbing is a greedy algorithim that simply searches for the best adjecent step and moves there until no better moves remain. Over a thousand trials the mean minimum was -0.120838860537 with a standard deviation of 0.0408106788745. The average time it took to find the min was 0.0079797763826 seconds. 
+
+
+\includegraphics[width=10cm]{HillClimbing}
+
+\pagebreak
+
+\section{Hill Climbing With Random Restarts}
+Hill climbing with random restarts worked the best out of all the algorithims achieving an average min of -0.150221658736 with a standard deviation of 0.000957860475357. Adjusting the step size to .01 allowed for the algorithim to only need 12 random restarts to find the global min about 99.9\% of the time, And did so, as expected about 12 times slower than standard hill climbing at 0.0915080306533 seconds on average.
+
+\includegraphics[width=10cm]{HillClimbingRR}
+
+\section{Simulated Annealing}
+Simulated annealing found a slighlty better mininimum than standard hill climbing averging at -0.123023846929 with a slightly lower standard deviation of 0.0236085881272, however the time it took was an order of magnitude higher at 0.0756657974717. Looking at the graph (hot temperatures repersented in red, cool temperatures in green) it seems simulated annealing often went over the area where the global minima lies and got stuck in other local minima as it began to cool. its effectiveness could probably be greatly increased if it remembered promising positions. Another reason it seems such a simple algorithim like hill climbing in some sense outpreformed simulated annealing was the relativly large area of the graph that would lead to the global minima through hill climbing. If it was a funcion with more local mininma for hill climbing to get stuck in perhaps simulated annealing would have prefromed much better in comparison.
+
+\includegraphics[width=10cm]{SimulatedAnnealing}
+
+\end{document}
